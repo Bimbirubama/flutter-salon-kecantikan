@@ -1,0 +1,3 @@
+- [x] Fix user parsing in auth_service.dart login method
+- [x] Uncomment dashboard routes in app_routes.dart
+- [x] Create AdminDashboard and UserDashboard classes
