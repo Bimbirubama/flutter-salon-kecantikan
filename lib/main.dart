@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'screens/auth/login_page.dart';
 import 'screens/auth/register_page.dart';
 import 'screens/user/user_dashboard.dart'; // Buat file dummy dulu jika belum ada
+import 'screens/admin/admin_dashboard.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/login': (context) => LoginPage(),
         '/register': (context) => RegisterPage(),
-        '/user-dashboard': (context) => UserDashboard (),
+        '/user-dashboard': (context) => UserDashboard(),
+        '/admin-dashboard': (context) => AdminDashboard(),
       },
     );
   }

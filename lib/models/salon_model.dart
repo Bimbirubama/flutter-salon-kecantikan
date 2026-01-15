@@ -22,8 +22,21 @@ class SalonModel {
       address: json['address'] ?? '',
       phone: json['phone'] ?? '',
       services: json['services'] ?? '',
-      // Menangani konversi price dari string ke double
-      price: json['price'] != null ? double.parse(json['price'].toString()) : 0.0,
+      price: json['price'] != null
+          ? double.parse(json['price'].toString())
+          : 0.0,
     );
+  }
+
+  // TAMBAHKAN INI agar service bisa mengirim data ke API
+  Map<String, dynamic> toJson() {
+    return {
+      if (id != null) 'id': id,
+      'name': name,
+      'address': address,
+      'phone': phone,
+      'services': services,
+      'price': price,
+    };
   }
 }

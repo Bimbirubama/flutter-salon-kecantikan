@@ -5,6 +5,7 @@ class CustomTextField extends StatefulWidget {
   final String label;
   final IconData icon;
   final bool isPassword;
+  final TextInputType keyboardType;
 
   const CustomTextField({
     super.key,
@@ -12,6 +13,7 @@ class CustomTextField extends StatefulWidget {
     required this.label,
     required this.icon,
     this.isPassword = false,
+    this.keyboardType = TextInputType.text,
   });
 
   @override
@@ -40,24 +42,31 @@ class _CustomTextFieldState extends State<CustomTextField> {
             color: const Color(0xFFB55163).withOpacity(0.05),
             blurRadius: 10,
             offset: const Offset(0, 5),
-          )
+          ),
         ],
       ),
       child: TextField(
         controller: widget.controller,
+        keyboardType: widget.keyboardType,
         // Gunakan state _obscureText di sini
         obscureText: _obscureText,
         style: const TextStyle(color: Color(0xFFB55163)),
         decoration: InputDecoration(
           labelText: widget.label,
           labelStyle: const TextStyle(color: Color(0xFFE7AC98), fontSize: 14),
-          prefixIcon: Icon(widget.icon, color: const Color(0xFFDF8B92), size: 20),
-          
+          prefixIcon: Icon(
+            widget.icon,
+            color: const Color(0xFFDF8B92),
+            size: 20,
+          ),
+
           // Tambahkan tombol mata hanya jika widget.isPassword adalah true
           suffixIcon: widget.isPassword
               ? IconButton(
                   icon: Icon(
-                    _obscureText ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                    _obscureText
+                        ? Icons.visibility_off_outlined
+                        : Icons.visibility_outlined,
                     color: const Color(0xFFDF8B92),
                     size: 20,
                   ),
@@ -69,9 +78,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   },
                 )
               : null, // Jika bukan password, jangan tampilkan apa-apa di kanan
-          
+
           border: InputBorder.none,
-          contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 15,
+          ),
         ),
       ),
     );
